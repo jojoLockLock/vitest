@@ -1122,6 +1122,9 @@ importers:
       vitest:
         specifier: workspace:*
         version: link:../vitest
+      vue-collapsed:
+        specifier: ^1.3.0
+        version: 1.3.0
     devDependencies:
       '@faker-js/faker':
         specifier: ^8.2.0
@@ -26339,6 +26342,10 @@ packages:
   /vm-browserify@1.1.2:
     resolution: {integrity: sha512-2ham8XPWTONajOR0ohOKOHXkm3+gaBmGut3SRuu75xLd/RRaY6vqgh8NBYYk7+RW3u5AtzPQZG8F10LHkl0lAQ==}
     dev: true
+
+  /vue-collapsed@1.3.0:
+    resolution: {integrity: sha512-d2qwv0fj4aaoekI+6x1RgxpoK0s5K8HLj70E+dWxIKkgzADcZ9kUrnXRazgIz9ETYkKOi6j2CWv/8+rS8Kr3LQ==}
+    dev: false
 
   /vue-component-type-helpers@1.8.4:
     resolution: {integrity: sha512-6bnLkn8O0JJyiFSIF0EfCogzeqNXpnjJ0vW/SZzNHfe6sPx30lTtTXlE5TFs2qhJlAtDFybStVNpL73cPe3OMQ==}

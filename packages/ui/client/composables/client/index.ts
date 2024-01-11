@@ -36,6 +36,13 @@ export const status = ref<WebSocketStatus>('CONNECTING')
 export const files = computed(() => client.state.getFiles())
 export const current = computed(() => files.value.find(file => file.id === activeFileId.value))
 export const currentLogs = computed(() => getTasks(current.value).map(i => i?.logs || []).flat() || [])
+export const showRaw = ref(window.localStorage.getItem('vitest:showRaw') === 'true')
+
+export function changeShowRaw(e) {
+  const value = e.target.checked
+  showRaw.value = value
+  window.localStorage.setItem('vitest:showRaw', String(value))
+}
 
 export function findById(id: string) {
   return files.value.find(file => file.id === id)

@@ -18,6 +18,7 @@ const modeMap: Record<string, any> = {
   // html: 'htmlmixed',
   // vue: 'htmlmixed',
   // svelte: 'htmlmixed',
+  markdown: "markdown",
   js: 'javascript',
   mjs: 'javascript',
   cjs: 'javascript',
@@ -37,7 +38,8 @@ defineExpose({ cm })
 onMounted(async () => {
   cm.value = useCodeMirror(el, modelValue as unknown as Ref<string>, {
     ...attrs,
-    mode: modeMap[mode || ''] || mode,
+    mode: modeMap[mode || ''] || mode || 'markdown',
+    theme: 'neo',
     readOnly: readOnly ? true : undefined,
     extraKeys: {
       'Cmd-S': function (cm) {

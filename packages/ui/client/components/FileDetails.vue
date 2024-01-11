@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ModuleGraphData } from 'vitest'
-import { client, current, currentLogs, isReport } from '~/composables/client'
+import { client, current, currentLogs, isReport, showRaw, changeShowRaw } from '~/composables/client'
 import type { Params } from '~/composables/params'
 import { viewMode } from '~/composables/params'
 import type { ModuleGraph } from '~/composables/module-graph'
@@ -96,6 +96,18 @@ function onDraft(value: boolean) {
         >
           Console ({{ consoleCount }})
         </button>
+        <button
+          tab-button
+          data-testid="btn-console"
+          :class="{ 'tab-button-active': viewMode === 'preview' }"
+          @click="changeViewMode('preview')"
+        >
+          Preview Console
+        </button>
+          <div :style="{ marginLeft: '10px' }">
+            <input type="checkbox" id="show-raw" v-model="showRaw" @click="changeShowRaw">
+            <label :style="{ marginLeft: '5px' }" for="show-raw">Show Raw</label>
+          </div>
       </div>
     </div>
 
@@ -105,6 +117,7 @@ function onDraft(value: boolean) {
       </div>
       <ViewEditor v-if="viewMode === 'editor'" :key="current.filepath" :file="current" data-testid="editor" @draft="onDraft" />
       <ViewConsoleOutput v-else-if="viewMode === 'console'" :file="current" data-testid="console" />
+      <ViewConsolePreviewOutput v-else-if="viewMode === 'preview'" :file="current" data-testid="preview" />
       <ViewReport v-else-if="!viewMode" :file="current" data-testid="report" />
     </div>
   </div>
